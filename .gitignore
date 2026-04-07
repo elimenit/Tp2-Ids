@@ -3,6 +3,7 @@
 # entorno virtual para las dependencias necesarias
 **/venv
 **/.venv 
-
+# Archivos temporales de python
+**/__pycache__
 ### Agregar Aqui Lo que falte
 

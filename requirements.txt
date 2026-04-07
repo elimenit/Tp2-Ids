@@ -1,0 +1,6 @@
+flask
+fastapi[standard]
+psycopg2-binary
+#mysql-connector-python
+pytest
+Pillow
