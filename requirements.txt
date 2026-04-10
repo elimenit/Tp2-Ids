@@ -1,6 +1,7 @@
-flask
-fastapi[standard]
-psycopg2-binary
-#mysql-connector-python
-pytest
-Pillow
+flask # Framework de desarrollo BackEnd
+psycopg2-binary #Conexion a postgresql
+mysql-connector-python # Conexion a Mysql
+pytest # PAra las pruebas automatizadas
+Pillow # Para la conversion de la documentacion a un libro pdf 
+python-dotenv # Para las configurciones de las variables de entorno (.env)
+fastapi[standard] # Documentacion del swagger

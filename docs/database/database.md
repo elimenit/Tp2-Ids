@@ -2,13 +2,13 @@
 """
 Se muestra como esta implementada la base de datos nos debe de mostrar una interfaz simple y amigable.
 """
-## /database/db.py
+## /database/conexion.py
 """
-Nos muestra como esta echa por dentro la el Objeto DataBase y nos muestra operaciones
-que podemos hacer con la base de datos 
+Muestra como esta configurado la conexion con el DBMS(DATABASE MANAGE SYSTEM) mysql para
+las querys o consultas a las base de datos
 """
 
-#### Opcional
+#### REQUERIDO
 Como carguar una variable de entorno(PASSWORD)
 ´´´
 from dotenv import load_dotenv

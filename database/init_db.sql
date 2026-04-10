@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS mundial_futbol;
+
+CREATE TABLE IF NOT EXISTS equipos (
+
+);
+CREATE TABLE IF NOT EXISTS partidos (
+
+);
+CREATE TABLE IF NOT EXISTS estadios (
+
+);
+CREATE TABLE IF NOT EXISTS ciudades (
+
+);
+CREATE TABLE IF NOT EXISTS fase_torneo (
+
+);
+CREATE TABLE IF NOT EXISTS usuarios (
+
+);
+CREATE TABLE IF NOT EXISTS prediccion (
+
+);
+CREATE TABLE IF NOT EXISTS ranking (
+
+);
+CREATE TABLE IF NOT EXISTS resultados (
+    
+);

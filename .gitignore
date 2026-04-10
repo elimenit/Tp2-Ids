@@ -1,5 +1,7 @@
 # Archivos o Directorios que nunca deberian ser subidos al repositorio de Github
-**/.env
+**/.env 
+.env
+**/**/.env
 # entorno virtual para las dependencias necesarias
 **/venv
 **/.venv 

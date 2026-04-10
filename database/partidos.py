@@ -1,0 +1,34 @@
+""" Contrato de la API con SWAGGER
+Implementacion de las consultas SQL para cumplir el contrato 
+Pertenecen a /routers/partidos.py
+## La implementacion es libre de realizarse mientras se cumpla el contrato
+"""
+from database.conexion import get_conexion 
+
+def obtener_partido():
+    conn = get_conexion()
+    pass
+
+def crear_partido():
+    conn = get_conexion()
+    pass
+
+def actualizar_partido():
+    conn = get_conexion()
+    pass
+
+def actualizar_parcialmente_partido():
+    conn = get_conexion()
+    pass
+
+def eliminar_partido():
+    conn = get_conexion()
+    pass
+
+def obtener_partidos(limit: int=10, offset: int=10):
+    conn = get_conexion()
+    pass
+
+def obtener_prediccion():
+    conn = get_conexion()
+    pass
