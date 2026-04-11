@@ -14,8 +14,11 @@ Enunciado del trabajo practico se encuentra en el repositorio
 
 # Dudas que puedan tener
 ## Que es lo que vamos ha realizar ?
-Implemntar una API para el desarrollo de un BackEnd con el framework minimalista Flask
+Implementar una API para el desarrollo de un BackEnd con el framework minimalista Flask
 
 ## Porque FastApi esta en el requirements.txt ? 
-Porque fue la maner mas facilde mostrar el contrato si por algun motivo estas offline
+Porque fue la manera mas facil que encontramos de mostrar el contrato si por algun motivo estas offline
 y quieres seguir viendo el contrato.
+
+## Porque le agregaron la documentacion ?
+Si por algun motivo quieres entender como esta hecha la aplicacion sin marearte dale un ojo a /docs
