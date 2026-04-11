@@ -8,10 +8,10 @@ load_dotenv() # carga las variables de entorno del .env <- Borra despues
 HOST=os.getenv("HOST_DB_MYSQL")
 USER=os.getenv("USER_DB_MYSQL")
 PASSWORD=os.getenv("PASSWORD_DB_MYSL")
-DATABASE =os.getenv("NAME_DB_MYSQL")
 PORT=os.getenv("PORT_DB_MYSQL")
+DBNAME = os.getenv("NAME_DB_MYSQL")
 
-def get_conexion():
+def get_connection():
     """ Conecion con la Base de datos
     Pre: Necesita que el DBMS (DATABASE MANAGE SISTEM) este activo 
         y correctamente configurado con user y password configurados.
@@ -21,5 +21,5 @@ def get_conexion():
     """
     return mysql.connector.connect(
         host="localhost", user=USER, 
-        dbname=DATABASE, port=PORT
+        port=PORT, database=DBNAME
     )
