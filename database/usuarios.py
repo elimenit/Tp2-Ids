@@ -5,7 +5,7 @@ Pertenecen a /routers/usuarios.py
 Opcional:
     Por favor las contraseñas se guardan hasheadas ;).
 """
-from database.conexion import get_conexion
+from database.db import get_connection
 
 def obtener_usuarios(limit: int = 10, offset: int = 10):
     conn = get_conexion()

@@ -11,7 +11,6 @@ DELETE /usuarios/<id>
 PAGINACION (limit-offset)
 """
 from flask import Blueprint
-from db import get_connection
 
 bp_usuarios = Blueprint("usuarios", __name__, url_prefix="/usuarios")
 

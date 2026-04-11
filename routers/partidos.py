@@ -17,7 +17,7 @@ PATCH /partidos/id
 Paginacion a cada uno de los endpoints(Offset-limit)
 Hasta cuanta informacion deberia enviar por request
 """
-from flask import Blueprint
+from flask import Blueprint, request, jsonify
 from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
 )
@@ -25,7 +25,7 @@ from schemas.partido import (
 bp_partidos = Blueprint('partidos', __name__, url_prefix='/') 
 
 @bp_partidos.route("/", methods=["GET"])
-def listar(equipo: str, fecha: str, fase: str, _limit: int, _offset: int) -> list[Partido]:
+def listar():
     """Lista todos los Partidos
     Pre: Recibe todos los filtros para encontrar lo partidos que matcheen
     Post: devuelve partidos que cumplen los filtros
@@ -40,10 +40,15 @@ def listar(equipo: str, fecha: str, fase: str, _limit: int, _offset: int) -> lis
     Returns:
         dict: devuelve una lista de partidos 
     """
-    return list[Partido]
+    equipo = request.args.get("equipo", "")
+    fecha = request.args.get("fecha", "")
+    fase = request.args.get("fase", "")
+    limit = request.args.get("_limit", 10, type=int)
+    offset = request.args.get("_offset", 10, type=int)
+    return jsonify({"hola": "mundo"})
 
 @bp_partidos.route("/", methods=["POST"])
-def crear() -> Partido:
+def crear():
     """ Creacion de un Partido
     Pre: Recibe en el Body la informacion de un partido
     Post: Devuelve el partido creado
@@ -54,7 +59,7 @@ def crear() -> Partido:
     return {} 
 
 @bp_partidos.route("/<int:id>", methods=["GET"])
-def obtener(id: int) -> Partido:
+def obtener(id: int):
     """Obtiene un Partido
     Pre: recibe un id de un partido existente
     Post: devuelve el partido correspondiente
@@ -68,7 +73,7 @@ def obtener(id: int) -> Partido:
     return Partido
 
 @bp_partidos.route("/<int:id>", methods=["PUT"])
-def actualizar(id: int) -> Partido:
+def actualizar(id: int):
     """Actualiza el partido
 
     Args:
@@ -80,7 +85,7 @@ def actualizar(id: int) -> Partido:
     return partido
 
 @bp_partidos.route("/<int:id>", methods=["PATCH"])
-def actualizar_parcialmente(id: int)-> Partido:
+def actualizar_parcialmente(id: int):
     """Actualiza un partido parcialmente
     Pre: la informacion de los campos a modificar deben ser obtenidas del body
     Post: Actualizar parcialmente el campo del partido que no es None
@@ -93,7 +98,7 @@ def actualizar_parcialmente(id: int)-> Partido:
     return Partido
 
 @bp_partidos.route("/<int:id>", methods=["DELETE"])
-def eliminar(id: int)-> Partido:
+def eliminar(id: int):
     """Elimina un partido
     Pre: Necesita el id de un partido existente
     Post: Elimina el prtido de la base de datos
@@ -106,7 +111,7 @@ def eliminar(id: int)-> Partido:
     return Partido
     
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
-def mostrar_resultado(id: int) -> ResultadoPartido:
+def mostrar_resultado(id: int):
     """Resultado de un partido
     Pre: necesita el id de un partido
     Post: devuelve el resultado de un partido
@@ -116,10 +121,10 @@ def mostrar_resultado(id: int) -> ResultadoPartido:
     Returns:
         ResultadoPartido: modelo de como resulto un partido
     """
-    return ResultadoPartido
+    pass
 
 @bp_partidos.route("/<int:id>/prediccion", methods=["POST"])
-def predecir(id: int) -> PrediccionPartido:
+def predecir(id: int):
     """Predeci el resultado de un partido
     Pre: necesita un id de un partido que exista
     Post: devuelva la prediccion de este partido
@@ -129,4 +134,4 @@ def predecir(id: int) -> PrediccionPartido:
     Returns:
         PrediccionPartido: modelo a devolver
     """
-    return PrediccionPartido
+    pass

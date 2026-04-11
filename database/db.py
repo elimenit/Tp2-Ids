@@ -7,7 +7,7 @@ load_dotenv() # carga las variables de entorno del .env <- Borra despues
 
 HOST=os.getenv("HOST_DB_MYSQL")
 USER=os.getenv("USER_DB_MYSQL")
-PASSWORD=os.getenv("PASSWORD_DB_MYSL")
+PASSWORD=os.getenv("PASSWORD_DB_MYSQL")
 PORT=os.getenv("PORT_DB_MYSQL")
 DBNAME = os.getenv("NAME_DB_MYSQL")
 
@@ -20,6 +20,6 @@ def get_connection():
         Session: devuelve una session o un cursor para ejecutar las consultas.
     """
     return mysql.connector.connect(
-        host="localhost", user=USER, 
-        port=PORT, database=DBNAME
+        host=HOST, user=USER, 
+        port=PORT, database=DBNAME, password=PASSWORD
     )
