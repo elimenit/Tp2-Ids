@@ -17,10 +17,12 @@ PATCH /partidos/id
 Paginacion a cada uno de los endpoints(Offset-limit)
 Hasta cuanta informacion deberia enviar por request
 """
-from flask import Blueprint
+from flask import Blueprint, request
+from database.conexion import get_conexion
 from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
 )
+from utils.errores import error_response
 
 bp_partidos = Blueprint('partidos', __name__, url_prefix='/') 
 
@@ -106,17 +108,53 @@ def eliminar(id: int)-> Partido:
     return Partido
     
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
-def mostrar_resultado(id: int) -> ResultadoPartido:
-    """Resultado de un partido
-    Pre: necesita el id de un partido
-    Post: devuelve el resultado de un partido
-    Args:
-        id (int): Id del partido
+def mostrar_resultado(id: int):
+    conn = get_conexion()
+    cursor = conn.cursor(dictionary=True)
 
-    Returns:
-        ResultadoPartido: modelo de como resulto un partido
-    """
-    return ResultadoPartido
+    try:
+        data = request.get_json()
+
+        if 'local' not in data or 'visitante' not in data:
+            return error_response("Faltan campos local o visitante", code="BAD_REQUEST")
+
+        if not isinstance(data['local'], int) or not isinstance(data['visitante'], int):
+            return error_response("local y visitante deben ser enteros", code="BAD_REQUEST")
+
+        if data['local'] < 0 or data['visitante'] < 0:
+            return error_response("Los goles no pueden ser negativos", code="BAD_REQUEST")
+
+        cursor.execute("SELECT id FROM partidos WHERE id = %s", (id,))
+        partido = cursor.fetchone()
+
+        if not partido:
+            return error_response("Partido no encontrado", code="NOT_FOUND", status_code=404)
+
+        cursor.execute("SELECT id FROM resultados WHERE partido_id = %s", (id,))
+        resultado_existente = cursor.fetchone()
+
+        if resultado_existente:
+            cursor.execute(
+                "UPDATE resultados SET local = %s, visitante = %s WHERE partido_id = %s",
+                (data['local'], data['visitante'], id)
+            )
+        else:
+            cursor.execute(
+                "INSERT INTO resultados (partido_id, local, visitante) VALUES (%s, %s, %s)",
+                (id, data['local'], data['visitante'])
+            )
+
+        conn.commit()
+        return '', 204
+
+    except Exception as e:
+        conn.rollback()
+        return error_response("Error interno del servidor", code="INTERNAL_ERROR", description=str(e), status_code=500)
+
+    finally:
+        cursor.close()
+        conn.close()
+
 
 @bp_partidos.route("/<int:id>/prediccion", methods=["POST"])
 def predecir(id: int) -> PrediccionPartido:
