@@ -10,7 +10,12 @@ DELETE /usuarios/<id>
 # Final 
 PAGINACION (limit-offset)
 """
-from flask import Blueprint
+from flask import Blueprint, jsonify, request
+from schemas.usuario import UsuarioBase, Usuario
+# Validaciones
+from seeds.usuarios import validacion_creacion_usuario
+# BD
+from database.usuarios import db_crear_usuario
 
 bp_usuarios = Blueprint("usuarios", __name__, url_prefix="/usuarios")
 
@@ -28,7 +33,22 @@ def crear_usuario():
     Pre: el usuario tiene que ser valido
     Post: Agrega un usuario a la Base de datos
     """
-    pass
+    body: dict = request.get_json()
+    nombre_usuario = body.get("nombre", None)
+    email_usuario = body.get("email", None)
+    
+    usuario_crear = UsuarioBase(nombre=nombre_usuario, email=email_usuario)
+    
+    if validacion_creacion_usuario(usuario_crear): 
+        usuario = db_crear_usuario(usuario_crear)
+
+        return jsonify({
+            "id": usuario.id,
+            "nombre": usuario.nombre,
+            "email": usuario.email
+        }), 201
+
+    return jsonify({"error": "Usuario invalido"}), 400
 
 @bp_usuarios.route(rule="/<int:id>", methods=["PUT"])
 def editar_usuario(id: int):

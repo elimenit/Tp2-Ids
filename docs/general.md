@@ -27,3 +27,8 @@ b = a # Identicos
 b.nombre = "Purpura"
 print( a == b ) # True
 ´´´
+## Vizualizar el contrato 
+Para poder vizualizar el contrato de la API podemos verlo con
+"""
+python3 -m fastapi dev test.py # Swagger.yaml
+"""

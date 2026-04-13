@@ -15,9 +15,9 @@ CREATE TABLE IF NOT EXISTS partidos (
     equipo_visitante_id INT NOT NULL,
     fecha DATETIME,
     fase_id INT NOT NULL,
-    FOREIGN KEY (equipo_local_id) REFERENCES equipos(id),
-    FOREIGN KEY (equipo_visitante_id) REFERENCES equipos(id),
-    FOREIGN KEY (fase_id) REFERENCES fases(id)
+    FOREIGN KEY (equipo_local_id) REFERENCES equipos(id) ON DELETE CASCADE,
+    FOREIGN KEY (equipo_visitante_id) REFERENCES equipos(id) ON DELETE CASCADE,
+    FOREIGN KEY (fase_id) REFERENCES fases(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -44,5 +44,3 @@ CREATE TABLE IF NOT EXISTS resultados (
     goles_visitante INT,
     FOREIGN KEY (partido_id) REFERENCES partidos(id) ON DELETE CASCADE
 );
-INSERT INTO usuarios(nombre, email) VALUES ('Juan Gonzales', 'jgonzales@gmail.com');
-INSERT INTO usuarios(nombre, email) VALUES ('Lanuss', 'lanuss@gmail.com');

@@ -6,3 +6,4 @@ pytest # PAra las pruebas automatizadas
 python-dotenv # Para las configurciones de las variables de entorno (.env)
 fastapi[standard] # Documentacion del swagger
 #flask-sqlalchemi #ORM de la base de datos
+requests # Para los tests
