@@ -5,29 +5,46 @@ Pertenecen a /routers/usuarios.py
 Opcional:
     Por favor las contraseñas se guardan hasheadas ;).
 """
-from database.conexion import get_conexion
+from database.db import get_connection
+from schemas.usuario import UsuarioBase, Usuario
 
-def obtener_usuarios(limit: int = 10, offset: int = 10):
+def db_obtener_usuarios(limit: int = 10, offset: int = 10):
     conn = get_conexion()
     pass
 
-def obtener_usuario():
+def db_obtener_usuario():
+    conn = get_connection()
+    pass
+
+def db_crear_usuario(user_recv: UsuarioBase)-> Usuario:
+    """Creacion de un Usuario
+    Contrato con los Routers:
+    Pre: recibe un UsuarioBase Verificado y valido .
+    Post: devuelve un Usuario.
+    Args:
+        user_recv (UsuarioBase): usuario con los datos a crear.
+    Returns:
+        Usuario: usuario que esta almacenado en la Base de Datos. 
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(f"INSERT INTO usuarios(nombre, email) VALUES ('{user_recv.nombre}', '{user_recv.email}');")
+    cursor.execute(f"SELECT * FROM usuarios WHERE nombre='{user_recv.nombre}' AND email='{user_recv.email}';")
+    user = cursor.fetchone()
+    conn.commit()
+    cursor.close()
+    return Usuario(id=user[0], nombre=user[1], email=user[2])
+
+
+def db_actualizar_usuario():
     conn = get_conexion()
     pass
 
-def crear_usuario():
+def db_actualizar_parcialmente_usuario():
     conn = get_conexion()
     pass
 
-def actualizar_usuario():
-    conn = get_conexion()
-    pass
-
-def actualizar_parcialmente_usuario():
-    conn = get_conexion()
-    pass
-
-def eliminar_usuario():
+def db_eliminar_usuario():
     query = ""
     conn = get_conexion()
     conn.execute(query)
