@@ -1,0 +1,368 @@
+[DuckDBService] Using centralized DB path: /home/tiziano/snap/postman/360/.config/Postman/duckdb/results.db
+[DuckDBService] Created new singleton instance with global guard
+The disableGPU setting is set to undefined
+Not disabling GPU
+Main: Starting cleanup of stale files
+[17033:0414/181437.356654:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.357601:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.357845:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[17033:0414/181437.358348:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.358654:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.358788:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17033:0414/181437.358929:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17033:0414/181437.359060:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[17033:0414/181437.362417:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.362676:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.362775:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[17033:0414/181437.363108:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.363233:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17033:0414/181437.363338:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17033:0414/181437.363451:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17033:0414/181437.363558:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[17033:0414/181437.568142:ERROR:viz_main_impl.cc(181)] Exiting GPU process due to errors during initialization
+Main: Cleanup of stale files completed
+[17093:0414/181445.264372:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.264571:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.264727:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[17093:0414/181445.265058:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.265182:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.265288:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17093:0414/181445.265375:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17093:0414/181445.265464:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[17093:0414/181445.268076:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.268219:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.268303:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[17093:0414/181445.268519:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.268605:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17093:0414/181445.268700:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17093:0414/181445.268775:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17093:0414/181445.268848:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[17093:0414/181445.271243:ERROR:viz_main_impl.cc(181)] Exiting GPU process due to errors during initialization
+[16754:0414/181445.434509:ERROR:object_proxy.cc(576)] Failed to call method: org.freedesktop.login1.Manager.Inhibit: object_path= /org/freedesktop/login1: org.freedesktop.DBus.Error.AccessDenied: An AppArmor policy prevents this sender from sending this message to this recipient; type="method_call", sender=":1.110" (uid=1000 pid=16754 comm="/snap/postman/360/usr/share/postman/postman --no-s" label="snap.postman.postman (enforce)") interface="org.freedesktop.login1.Manager" member="Inhibit" error name="(unset)" requested_reply="0" destination="org.freedesktop.login1" (uid=0 pid=690 comm="/lib/systemd/systemd-logind " label="unconfined")
+[17100:0414/181445.464354:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.464560:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.464706:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+1776190485464 main info "Booting Postman 11.71.7, linux-6.8.0-107-generic on x64"
+[17100:0414/181445.465118:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.465241:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.465333:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17100:0414/181445.465424:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17100:0414/181445.465518:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+1776190485466 main info "EventBus~initialize - Success"
+[17100:0414/181445.467994:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.468160:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.468275:ERROR:gl_display.cc(767)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[17100:0414/181445.468567:ERROR:angle_platform_impl.cc(44)] Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1083 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.468734:ERROR:gl_display.cc(497)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[17100:0414/181445.468845:ERROR:gl_display.cc(767)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[17100:0414/181445.468927:ERROR:gl_display.cc(801)] Initialization of all EGL display types failed.
+[17100:0414/181445.469026:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+1776190485471 main info "Proxy configuration has not been setup"
+1776190485472 main info "CloudProxyManager~init - Success"
+[17100:0414/181445.472360:ERROR:viz_main_impl.cc(181)] Exiting GPU process due to errors during initialization
+1776190486275 main info "performShellDataMigration: Starting shell data migration"
+1776190486276 main info "migrateShellData:Starting"
+1776190486297 main info "migrateShellData: Old storage cleaned up"
+MESA-LOADER: failed to open i965 (search paths /snap/postman/360/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: i965
+MESA-LOADER: failed to open kms_swrast (search paths /snap/postman/360/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: kms_swrast
+MESA-LOADER: failed to open swrast (search paths /snap/postman/360/usr/lib/x86_64-linux-gnu/dri)
+failed to load swrast driver
+1776190493212 main info "migrateShellData: Got data from shell. Writing to storage"
+1776190493278 main info "performShellDataMigration: Migration successful on try count 1"
+1776190493308 main info "UpdateHandler~init - Success"
+1776190493349 main info "LeaderSelection: Initialized successfully"
+1776190493411 main info "GPU detected VID 0 DID 0 ACTIVE false"
+1776190493418 main info "main.js: Agent started"
+1776190493420 main info "shellController~init: Success"
+1776190493420 main info "shellMeta~init: Success"
+1776190493421 main info "partitionMigrationService: State of V7 partition:"
+1776190493421 main info "partitionMigrationService: V7 partitions",[]
+1776190493424 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no partition with scratchpad namespace"
+1776190493425 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no transit partition which could have been used for scratchpad"
+1776190493426 main info "partitionMigrationService~init: Success"
+1776190493428 main info "partitionMigrationService~runV8PartitionsIntegrity: Two way migration~ removing the following partitions from v8",[]
+1776190493429 main info "userPartitionService~_rectifyTheActivePartitionOfApplication: Setting the active partition to ",null
+1776190493448 main info "LinuxAutoUpdater~Cleanup - Initial cleanup successful"
+1776190493454 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1776190493454 main info "newAccountRegionPreferenceService~getToggleMenuTemplate - Using preference:","useUSRegion"
+1776190493563 main info "userPartitionService~init: Success"
+1776190493664 main info "userPartitionService: State of v8 partition system:"
+1776190493665 main info "shell~init~getPartitionToLoad: loading scratchpad partition"
+1776190493666 main info "userPartitionService: List of partitions:",[]
+1776190493666 main info "userPartitionService: users global meta:",{}
+1776190493866 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: undefined"
+1776190506330 main info "RuntimeIPCAgent~started: Success"
+1776190506575 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776190506584 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776190506609 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776190506640 main info "windowManager: First requester booted successfully."
+1776190506642 main info "windowManager~restoreWindows: Restoring requester windows"
+1776190506643 main info "WebVersionService: Initialized successfully with version: undefined"
+1776190506644 main info "Main~AppEvents - Received booted event for process requester.Version undefined UI Version: undefined Desktop Platform Version: 11.71.7"
+Fontconfig warning: "/etc/fonts/conf.d/10-hinting-slight.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/10-hinting-slight.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/10-hinting-slight.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/10-hinting-slight.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/10-hinting-slight.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/10-hinting-slight.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/10-hinting-slight.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/11-lcdfilter-default.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/20-unhint-small-vera.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/30-metric-aliases.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/30-metric-aliases.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/30-metric-aliases.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/30-metric-aliases.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/30-metric-aliases.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/30-metric-aliases.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/30-metric-aliases.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/40-nonlatin.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/40-nonlatin.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/40-nonlatin.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/40-nonlatin.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/40-nonlatin.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/40-nonlatin.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/40-nonlatin.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/45-generic.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/45-generic.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/45-generic.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/45-generic.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/45-generic.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/45-generic.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/45-generic.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/45-latin.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/45-latin.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/45-latin.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/45-latin.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/45-latin.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/45-latin.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/45-latin.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/49-sansserif.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/49-sansserif.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/49-sansserif.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/49-sansserif.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/49-sansserif.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/49-sansserif.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/49-sansserif.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/50-user.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/50-user.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/50-user.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/50-user.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/50-user.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/50-user.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/50-user.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/51-local.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/51-local.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/51-local.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/51-local.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/51-local.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/51-local.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/51-local.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/60-generic.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/60-generic.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/60-generic.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/60-generic.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/60-generic.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/60-generic.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/60-generic.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/60-latin.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/60-latin.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/60-latin.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/60-latin.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/60-latin.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/60-latin.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/60-latin.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/65-fonts-persian.conf", line 34: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/65-fonts-persian.conf", line 35: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/65-fonts-persian.conf", line 35: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/65-fonts-persian.conf", line 35: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/65-fonts-persian.conf", line 36: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/65-fonts-persian.conf", line 36: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/65-nonlatin.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/65-nonlatin.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/65-nonlatin.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/65-nonlatin.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/65-nonlatin.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/65-nonlatin.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/65-nonlatin.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/69-unifont.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/69-unifont.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/69-unifont.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/69-unifont.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/69-unifont.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/69-unifont.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/70-no-bitmaps.conf", line 8: unknown element "description"
+Fontconfig warning: "/etc/fonts/conf.d/80-delicious.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/80-delicious.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/80-delicious.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/80-delicious.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/80-delicious.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/80-delicious.conf", line 6: invalid attribute 'version'
+Fontconfig warning: "/etc/fonts/conf.d/90-synthetic.conf", line 4: unknown element "its:rules"
+Fontconfig warning: "/etc/fonts/conf.d/90-synthetic.conf", line 5: unknown element "its:translateRule"
+Fontconfig error: "/etc/fonts/conf.d/90-synthetic.conf", line 5: invalid attribute 'translate'
+Fontconfig error: "/etc/fonts/conf.d/90-synthetic.conf", line 5: invalid attribute 'selector'
+Fontconfig error: "/etc/fonts/conf.d/90-synthetic.conf", line 6: invalid attribute 'xmlns:its'
+Fontconfig error: "/etc/fonts/conf.d/90-synthetic.conf", line 6: invalid attribute 'version'
+1776190958685 main info "Main - model-events~user - (users, add) received"
+1776190958789 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776190958790 main info "WebVersionService: Resetting web app version"
+1776190961186 main info "AuthHandler~open: Received dom-ready event."
+1776190961189 main info "AuthHandler~open: Received did-finish-load event."
+1776190961877 main warn "AuthHandler~open: Current app is not default protocol client - Falling back to polling mechanism."
+1776190961892 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1776190961892 main info "newAccountRegionPreferenceService~getRegionPreference - Using preference:","useUSRegion"
+1776190961893 main info "AuthHandler~open: new Account region preference:","us"
+1776190961893 main info "AuthHandler~open: get multiLoginToken token."
+1776190961893 main info "AuthHandler~open: Publishing initialize event to auth-window channel."
+[17113:0414/182246.661689:ERROR:gles2_cmd_decoder_passthrough.cc(1064)] [GroupMarkerNotSet(crbug.com/242999)!:A060120064370000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.
+[17113:0414/183407.462261:ERROR:gles2_cmd_decoder_passthrough.cc(1064)] [GroupMarkerNotSet(crbug.com/242999)!:A060120064370000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.
+1776192720936 main info "userPartitionService: State of v8 partition system:"
+1776192721031 main info "shell~init~getPartitionToLoad: loading scratchpad partition"
+1776192721091 main info "userPartitionService: List of partitions:",[{"partitionId":"afca05b1-7771-4ada-bc7f-c2dd4046572d","namespace":"scratchPad","userId":0,"teamId":0,"isDirty":false}]
+1776192721091 main info "userPartitionService: users global meta:",{}
+1776192721092 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: undefined"
+1776192744371 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192744418 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192744453 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192744766 main info "windowManager: First requester booted successfully."
+1776192744798 main info "windowManager~restoreWindows: Restoring requester windows"
+1776192744800 main info "WebVersionService: Initialized successfully with version: undefined"
+1776192744802 main info "Main~AppEvents - Received booted event for process requester.Version undefined UI Version: undefined Desktop Platform Version: 11.71.7"
+1776192767390 main info "Main - model-events~user - (users, add) received"
+1776192767565 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776192767567 main info "WebVersionService: Resetting web app version"
+1776192767568 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776192767569 main info "WebVersionService: Resetting web app version"
+1776192768871 main info "AuthHandler~open: Received dom-ready event."
+1776192768955 main info "AuthHandler~open: Received did-finish-load event."
+1776192770358 main warn "AuthHandler~open: Current app is not default protocol client - Falling back to polling mechanism."
+1776192770472 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1776192770473 main info "newAccountRegionPreferenceService~getRegionPreference - Using preference:","useUSRegion"
+1776192770474 main info "AuthHandler~open: new Account region preference:","us"
+1776192770475 main info "AuthHandler~open: get multiLoginToken token."
+1776192770476 main info "AuthHandler~open: Publishing initialize event to auth-window channel."
+Attempting to call a function in a renderer window that has been closed or released.
+Function provided here: authentication.js:2:407699
+Attempting to call a function in a renderer window that has been closed or released.
+Function provided here: authentication.js:2:407699
+[17113:0414/185256.062660:ERROR:gles2_cmd_decoder_passthrough.cc(1064)] [GroupMarkerNotSet(crbug.com/242999)!:A060120064370000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.
+1776192780899 main info "userPartitionService: State of v8 partition system:"
+1776192780901 main info "shell~init~getPartitionToLoad: loading scratchpad partition"
+1776192780902 main info "userPartitionService: List of partitions:",[{"partitionId":"afca05b1-7771-4ada-bc7f-c2dd4046572d","namespace":"scratchPad","userId":0,"teamId":0,"isDirty":false}]
+1776192780902 main info "userPartitionService: users global meta:",{}
+1776192780903 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: undefined"
+1776192786169 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192786207 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192786262 main info "Main~scratchpadThemeAction:: action: set, value: light"
+1776192786367 main info "windowManager: First requester booted successfully."
+1776192786368 main info "windowManager~restoreWindows: Restoring requester windows"
+1776192786369 main info "WebVersionService: Initialized successfully with version: undefined"
+1776192786370 main info "Main~AppEvents - Received booted event for process requester.Version undefined UI Version: undefined Desktop Platform Version: 11.71.7"
+1776192791657 main info "Main - model-events~user - (users, add) received"
+1776192791759 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776192791760 main info "WebVersionService: Resetting web app version"
+1776192791761 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776192791762 main info "WebVersionService: Resetting web app version"
+1776192791762 main info "WebVersionService: Resetting UI version as user logged out/switched account"
+1776192791763 main info "WebVersionService: Resetting web app version"
+1776192792380 main info "AuthHandler~open: Received dom-ready event."
+1776192792388 main info "AuthHandler~open: Received did-finish-load event."
+1776192792702 main warn "AuthHandler~open: Current app is not default protocol client - Falling back to polling mechanism."
+1776192792704 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1776192792704 main info "newAccountRegionPreferenceService~getRegionPreference - Using preference:","useUSRegion"
+1776192792704 main info "AuthHandler~open: new Account region preference:","us"
+1776192792705 main info "AuthHandler~open: get multiLoginToken token."
+1776192792705 main info "AuthHandler~open: Publishing initialize event to auth-window channel."
+Attempting to call a function in a renderer window that has been closed or released.
+Function provided here: authentication.js:2:407699
+Attempting to call a function in a renderer window that has been closed or released.
+Function provided here: authentication.js:2:407699
+[17113:0414/185315.349919:ERROR:gles2_cmd_decoder_passthrough.cc(1064)] [GroupMarkerNotSet(crbug.com/242999)!:A060120064370000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.
+1776193079670 main info "Shell~init~loginUser: associating the user ","54021166"," with transit partition"
+1776193079672 main info "userPartitionService~getNewPartitionId: creating a partition with userId and teamId as 0"
+1776193081980 main info "userPartitionService~associateTransitPartition: ",{"partitionId":"6d011b0e-fba2-45a4-833c-95c62c53dc6b","context":{"namespace":"users","userId":"54021166","teamId":"15121597","region":"us"}}
+1776193083502 main info "userPartitionService: State of v8 partition system:"
+1776193083504 main info "userPartitionService: List of partitions:",[{"partitionId":"6d011b0e-fba2-45a4-833c-95c62c53dc6b","namespace":"users","userId":"54021166","teamId":"15121597","lastUpdated":"2026-04-14T18:58:01.972Z"},{"partitionId":"afca05b1-7771-4ada-bc7f-c2dd4046572d","namespace":"scratchPad","userId":0,"teamId":0,"isDirty":false}]
+1776193083504 main info "userPartitionService: users global meta:",{}
+1776193083789 main info "Main:windowManager~newRequesterWindow: found partition: 6d011b0e-fba2-45a4-833c-95c62c53dc6b for user: 54021166 on us"
+1776193083789 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: us"
+1776193085903 main info "getDesktopReleaseVersionAsQueryParams: webVersion: "
+1776193110748 main info "Main~getRemoteInitPath:: "
+1776193111072 main info "Main - model-events~user - (user, updated) received"
+1776193111074 main info "Main~reload: https://desktop.postman.com/?desktopVersion=11.71.7&userId=54021166&teamId=15121597&region=us"
+1776193111921 main info "INTERCEPTOR CONNECTIVITY: Connecting to Interceptor Bridge"
+1776193112416 main info "windowManager: First requester booted successfully."
+1776193112417 main info "windowManager~restoreWindows: Restoring requester windows"
+1776193112418 main info "WebVersionService: Initialized successfully with version: 11.72.3-ui-251118-0501"
+1776193112419 main info "Main~AppEvents - Received booted event for process requester.Version 11.72.3 UI Version: 11.72.3-ui-251118-0501 Desktop Platform Version: 11.71.7"
+1776193112839 main info "Main~getRemoteInitPath:: "
+1776193115492 main info "Main~getRemoteInitPath:: "
+1776193115560 main info "Main - model-events~user - (user, bootstrapUser) received"
+1776193115561 main info "model-events~user - bootstrapUser received"
+1776193115800 main info "Main - model-events~user - (user, updated) received"
+1776193115802 main info "Main - model-events~user - (user, bootstrapUser) received"
+1776193115802 main info "model-events~user - bootstrapUser received"
+1776193116490 main info "Main - model-events~user - (user, updated) received"
+1776193116633 main info "WebVersionService: Initialized successfully with version: 11.72.3-ui-251118-0501"
+1776193116634 main info "Main~AppEvents - Received booted event for process requester.Version 11.72.3 UI Version: 11.72.3-ui-251118-0501 Desktop Platform Version: 11.71.7"
+1776193116784 main info "Main~getRemoteInitPath:: "
+1776193118205 main info "INTERCEPTOR CONNECTIVITY: Attempting to start websocket server on port 15611"
+1776193118889 main info "Main - model-events~user - (user, bootstrappedUser) received"
+1776193118939 main info "Main - model-events~user - (user, updated) received"
+1776193119045 main info "Main~getPlatformLaunchPerfMetrics"
+1776193120149 main info "Main - model-events~user - (user, bootstrappedUser) received"
+1776193124280 main info "MenuManager~FlexibleUI - Updating menu for flexible layout: false"
+1776193124479 main info "GPU detected VID 0 DID 0 ACTIVE false"
+1776193124486 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1776193124486 main info "newAccountRegionPreferenceService~getToggleMenuTemplate - Using preference:","useUSRegion"
+1776193124531 main info "MenuManager~updateViewMenuForFlexibleLayout: Menu updated with flexible layout disabled"
+1776193136696 main info "Agent.worker: Agent process started"
+1776193136719 main info "Initializing provider:","runtime"
+1776193136722 main info "Initializing provider:","cloudFiles"
+1776193136723 main info "Agent.worker: Provider initialized","cloudFiles"
+[20936:0414/185857.483999:ERROR:ffmpeg_common.cc(970)] Unsupported pixel format: -1
+1776193139417 main info "Agent.worker: Provider initialized","runtime"
+** Message: 18:59:00.462: Remote error from secret service: org.freedesktop.DBus.Error.AccessDenied: An AppArmor policy prevents this sender from sending this message to this recipient; type="method_call", sender=":1.94" (uid=1000 pid=16754 comm="/snap/postman/360/usr/share/postman/postman --no-s" label="snap.postman.postman (enforce)") interface="org.freedesktop.Secret.Service" member="OpenSession" error name="(unset)" requested_reply="0" destination=":1.17" (uid=1000 pid=1474 comm="gnome-keyring-daemon --start " label="unconfined")
+1776193140653 main error "Error while retrieving user key from keychain",{"name":"Error","message":"An AppArmor policy prevents this sender from sending this message to this recipient; type=\"method_call\", sender=\":1.94\" (uid=1000 pid=16754 comm=\"/snap/postman/360/usr/share/postman/postman --no-s\" label=\"snap.postman.postman (enforce)\") interface=\"org.freedesktop.Secret.Service\" member=\"OpenSession\" error name=\"(unset)\" requested_reply=\"0\" destination=\":1.17\" (uid=1000 pid=1474 comm=\"gnome-keyring-daemon --start \" label=\"unconfined\")","stack":"Error: An AppArmor policy prevents this sender from sending this message to this recipient; type=\"method_call\", sender=\":1.94\" (uid=1000 pid=16754 comm=\"/snap/postman/360/usr/share/postman/postman --no-s\" label=\"snap.postman.postman (enforce)\") interface=\"org.freedesktop.Secret.Service\" member=\"OpenSession\" error name=\"(unset)\" requested_reply=\"0\" destination=\":1.17\" (uid=1000 pid=1474 comm=\"gnome-keyring-daemon --start \" label=\"unconfined\")\n    at /snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:12993\n    at _unpackers.<computed> (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:19595)\n    at ext (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:29994)\n    at e.exports (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:22371)\n    at array (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:29511)\n    at e.exports (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:21857)\n    at map (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:29440)\n    at e.exports (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:21695)\n    at map (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:29440)\n    at e.exports (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:21695)\n    at t.decode (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:27113)\n    at Object.decode (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:13076)\n    at t.default (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:13434)\n    at Object.receive (/snap/postman/360/usr/share/postman/resources/app/vendors-node_modules_postman_runtime_runtime-rpc_dist_index_js-9a3dcf6a27aa9af6.min.js:1:5818)\n    at /snap/postman/360/usr/share/postman/resources/app/Agent-dd8f22cb482af9dd.min.js:1:2831\n    at Worker.<anonymous> (/snap/postman/360/usr/share/postman/resources/app/Agent-dd8f22cb482af9dd.min.js:1:4182)"}
+1776194285676 main info "Agent.worker: Provider initialized","fs"
+1776194285702 main info "Initializing provider:","fs"
+1776194293235 main info "sendAnalytics: Error while sending request",{"name":"TypeError","message":"fetch failed","stack":"TypeError: fetch failed\n    at node:internal/deps/undici/undici:13502:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}

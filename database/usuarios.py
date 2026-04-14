@@ -8,9 +8,15 @@ Opcional:
 from database.db import get_connection
 from schemas.usuario import UsuarioBase, Usuario
 
-def db_obtener_usuarios(limit: int = 10, offset: int = 10):
-    conn = get_conexion()
-    pass
+def db_obtener_usuarios(
+        limit: int = 10, 
+        offset: int = 0
+        ) -> list[tuple[int, str]]:
+    with get_connection() as cur:
+        query = "SELECT id, nombre FROM usuarios LIMIT %s OFFSET %s"
+        cur.execute(query, limit, offset)
+        results = cur.fetchall()
+    return results
 
 def db_obtener_usuario():
     conn = get_connection()

@@ -16,7 +16,7 @@ DBNAME = os.getenv("NAME_DB_MYSQL")
 
 def iniciar_base_datos():
     """ Inicializa la base de datos
-    Pre: Nesecita que el DBMS este corriendo y que solo se ejecute al iniciar la Aplicacion de flask.
+    Pre: Necesita que el DBMS este corriendo y que solo se ejecute al iniciar la Aplicacion de flask.
     Post: Ejecuta consultas para inicializar la base de datos.
     """
     archivo = open(file="database/init_db.sql", mode="r")

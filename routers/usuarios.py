@@ -15,17 +15,23 @@ from schemas.usuario import UsuarioBase, Usuario
 # Validaciones
 from seeds.usuarios import validacion_creacion_usuario
 # BD
-from database.usuarios import db_crear_usuario
+from database.usuarios import db_crear_usuario, db_obtener_usuarios, db_obtener_usuario
 
 bp_usuarios = Blueprint("usuarios", __name__, url_prefix="/usuarios")
 
 @bp_usuarios.route(rule="/", methods=["GET"])
-def listar_usuarios(limit: int =10, offset: int =10):
+def listar_usuarios():
     """ Lista los usuarios con paginacion
-    Pre: Necesita que hayga datos en labase de datos
+    Pre: Necesita que halla datos en labase de datos
     Post: Devuelva una lista de usuarios
     """
-    pass
+    body: dict = request.get_json()
+    limit = body.get("_limit", None)
+    offset = body.get("_offset", None)
+    
+    users_data = db_obtener_usuarios(limit, offset)
+    list_users = [{'id': userid, 'nombre': name} for userid, name in users_data]
+
 
 @bp_usuarios.route(rule="/", methods=["POST"])
 def crear_usuario():
