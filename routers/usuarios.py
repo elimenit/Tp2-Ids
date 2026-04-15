@@ -25,13 +25,25 @@ def listar_usuarios():
     Pre: Necesita que halla datos en labase de datos
     Post: Devuelva una lista de usuarios
     """
-    body: dict = request.get_json()
-    limit = body.get("_limit", None)
-    offset = body.get("_offset", None)
-    
+    first = request.args.get("_first", type=str)
+    prev = request.args.get("_prev", type=str)
+    next = request.args.get("_next", type=str)
+    last = request.args.get("_last", type=str)
+    limit = request.args.get("_limit", default=10, type=int)
+    offset = request.args.get("_offset", default=0, type=int)
+    actual_offset = offset
+
+
     users_data = db_obtener_usuarios(limit, offset)
     list_users = [{'id': userid, 'nombre': name} for userid, name in users_data]
+    return jsonify()
 
+@bp_usuarios.route(rule="/", methods=["GET"])
+def listar_usuario():
+    """ 
+    Recibido un ID de usuario, devuelve su información
+    """
+    pass
 
 @bp_usuarios.route(rule="/", methods=["POST"])
 def crear_usuario():

@@ -9,11 +9,15 @@ from database.db import get_connection
 from schemas.usuario import UsuarioBase, Usuario
 
 def db_obtener_usuarios(
-        limit: int = 10, 
+        limit: int = 0, 
         offset: int = 0
         ) -> list[tuple[int, str]]:
+    """
+    Devuelve una lista con todos los registros de la tabla usuarios ordeandos por ID
+    Puede recibir parámetros LIMIT y OFFSET, con valores predeterminados nulos
+    """
     with get_connection() as cur:
-        query = "SELECT id, nombre FROM usuarios LIMIT %s OFFSET %s"
+        query = "SELECT id, nombre FROM usuarios ORDER BY id LIMIT %s OFFSET %s"
         cur.execute(query, limit, offset)
         results = cur.fetchall()
     return results
