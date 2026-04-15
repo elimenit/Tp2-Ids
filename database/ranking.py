@@ -4,8 +4,13 @@ Pertenecen a /routers/ranking.py
 ## La implementacion es libre de realizarse mientras se cumpla el contrato
 
 """
-from database.conexion import get_conexion
+from database.DB import get_connection
+from flask import Blueprint
 
+bp_ranking = Blueprint("ranking", __name__, url_prefix="/ranking")
+
+@bp_ranking.route("/", methods=["GET"])
 def obtener_ranking():
-    conn = get_conexion()
+    """ Obtiene el ranking
+    """
     pass

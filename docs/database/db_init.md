@@ -23,4 +23,4 @@ sudo systemctl restart mysql
 Intentar de vuelta si funciona¡
 ## Inportante
 Recuerden configurar el archivo .env en la raiz del proyecto y siempre
- verificar que este ageegado en el .gitignore
+ verificar que este agregado en el .gitignore
