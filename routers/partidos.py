@@ -6,10 +6,10 @@ POST /partidos
 # por Id
 GET /partidos/<id>"""
 
-from database.conexion import get_conexion
+from database.db import get_connection
 
 def obtener_partido(id_partido: int):
-    conn = get_conexion()
+    conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
     query = "SELECT * FROM partidos WHERE id = %s"
@@ -98,7 +98,7 @@ def actualizar(id: int):
     Returns:
         Partido: el partido actualizado
     """
-    return partido
+    pass
 
 @bp_partidos.route("/<int:id>", methods=["PATCH"])
 def actualizar_parcialmente(id: int):
