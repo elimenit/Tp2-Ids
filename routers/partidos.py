@@ -4,8 +4,24 @@ GET /partidos
 POST /partidos
 
 # por Id
-GET /partidos/<id>
-DElETE /partidos/<id>
+GET /partidos/<id>"""
+
+from database.conexion import get_conexion
+
+def obtener_partido(id_partido: int):
+    conn = get_conexion()
+    cursor = conn.cursor(dictionary=True)
+
+    query = "SELECT * FROM partidos WHERE id = %s"
+    cursor.execute(query, (id_partido,))
+
+    resultado = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return resultado
+"""DElETE /partidos/<id>
 
 # Resultados
 PUT /partidos/id/resultado
@@ -134,4 +150,4 @@ def predecir(id: int):
     Returns:
         PrediccionPartido: modelo a devolver
     """
-    pass
+    return PrediccionPartido
