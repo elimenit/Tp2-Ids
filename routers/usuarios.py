@@ -16,6 +16,10 @@ from schemas.usuario import UsuarioBase, Usuario
 from seeds.usuarios import validacion_creacion_usuario
 # BD
 from database.usuarios import db_crear_usuario, db_obtener_usuarios, db_obtener_usuario
+# para la paginacion
+from utils.paginacion import crear_response_paginacion
+# para errores
+from utils.errores import error_response
 
 bp_usuarios = Blueprint("usuarios", __name__, url_prefix="/usuarios")
 
@@ -25,24 +29,39 @@ def listar_usuarios():
     Pre: Necesita que halla datos en labase de datos
     Post: Devuelva una lista de usuarios
     """
-    first = request.args.get("_first", type=str)
-    prev = request.args.get("_prev", type=str)
-    next = request.args.get("_next", type=str)
-    last = request.args.get("_last", type=str)
     limit = request.args.get("_limit", default=10, type=int)
     offset = request.args.get("_offset", default=0, type=int)
-    actual_offset = offset
 
-
-    users_data = db_obtener_usuarios(limit, offset)
-    list_users = [{'id': userid, 'nombre': name} for userid, name in users_data]
-    return jsonify()
+    base = request.base_url
+    users_data = db_obtener_usuarios()
+    num_users = len(users_data)
+    if offset >= num_users:
+        return error_response(
+            "OFFSET INVALIDO",
+            "INPUT ERROR",
+            f"Ingrese un offset menor a {num_users}",
+            400
+        )
+    
+    selected_users = users_data[offset:(limit+offset)]
+    list_users = [{'id': userid, 'nombre': name} for userid, name in selected_users]
+    response_pages = crear_response_paginacion(limit, offset, num_users, base)
+    response = {
+        "metadata": {
+            "cant_usuarios": len(users_data)
+        },
+        "usuarios": list_users,
+        "_links": response_pages
+    }
+    return jsonify(response), 200
 
 @bp_usuarios.route(rule="/", methods=["GET"])
 def listar_usuario():
     """ 
     Recibido un ID de usuario, devuelve su información
     """
+
+    usuarios = db_obtener_usuarios()
     pass
 
 @bp_usuarios.route(rule="/", methods=["POST"])

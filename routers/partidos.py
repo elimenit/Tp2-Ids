@@ -124,8 +124,8 @@ def eliminar(id: int):
     Returns:
         Partido: partido eliminado
     """
-    return Partido
-    
+    pass
+
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
 def mostrar_resultado(id: int):
     """Resultado de un partido
