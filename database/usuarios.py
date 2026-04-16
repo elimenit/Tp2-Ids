@@ -14,7 +14,7 @@ def db_obtener_usuarios() -> list[tuple[int, str]]:
     """
     with get_connection() as conn:
         with conn.cursor() as cur:
-            query = "SELECT id, nombre FROM usuarios ORDER BY id;"
+            query = "SELECT id, nombre, email FROM usuarios ORDER BY id;"
             cur.execute(query)
             results = cur.fetchall()
     return results

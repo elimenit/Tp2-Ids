@@ -33,18 +33,26 @@ def listar_usuarios():
     offset = request.args.get("_offset", default=0, type=int)
 
     base = request.base_url
-    users_data = db_obtener_usuarios()
+    try:
+        users_data = db_obtener_usuarios()
+    except Exception as e:
+        return error_response(
+            "Error del servidor",
+            "INTERNAL_SERVER_ERROR",
+            f"Ha ocurrido un error durante la obtención de usuarios: {e}",
+            500
+        )
     num_users = len(users_data)
     if offset >= num_users:
         return error_response(
-            "OFFSET INVALIDO",
-            "INPUT ERROR",
+            "Error de input",
+            "INVALID_OFFSET",
             f"Ingrese un offset menor a {num_users}",
-            400
+            400 
         )
     
     selected_users = users_data[offset:(limit+offset)]
-    list_users = [{'id': userid, 'nombre': name} for userid, name in selected_users]
+    list_users = [{'id': userid, 'nombre': name} for userid, name, _ in selected_users]
     response_pages = crear_response_paginacion(limit, offset, num_users, base)
     response = {
         "metadata": {
@@ -55,14 +63,35 @@ def listar_usuarios():
     }
     return jsonify(response), 200
 
-@bp_usuarios.route(rule="/", methods=["GET"])
-def listar_usuario():
+@bp_usuarios.route(rule="/<int:input_id>", methods=["GET"])
+def listar_usuario(input_id):
     """ 
     Recibido un ID de usuario, devuelve su información
     """
-
-    usuarios = db_obtener_usuarios()
-    pass
+    try:
+        users_data = db_obtener_usuarios()
+    except Exception as e:
+        return error_response(
+            "Error del servidor",
+            "INTERNAL_SERVER_ERROR",
+            f"Ha ocurrido un error durante la obtención de usuarios: {e}",
+            500
+        )
+    lista_ids = [x[0] for x in users_data]
+    if (input_id not in lista_ids) or (input_id <= 0):
+        return error_response(
+            "Input error",
+            "ERROR_NOT_FOUND",
+            f"No se han encontrado coincidencias para el ID: {input_id}. Ingrese un numero entre {min(lista_ids)} a {max(lista_ids)}.",
+            404
+        )
+    for id, user, email in users_data:
+        if id == input_id:
+            return {
+                "id": id,
+                "nombre": user,
+                "email": email
+            }, 200
 
 @bp_usuarios.route(rule="/", methods=["POST"])
 def crear_usuario():

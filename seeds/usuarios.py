@@ -18,8 +18,3 @@ def validacion_creacion_usuario(chek_user: UsuarioBase) -> bool:
         #raise Exception("Usuario con nombre invalido")
     
     return es_valido
-
-def validar_existencia_usuario(users: dict):
-    """
-    Verifica que hayan suficientes usuarios para realizar la paginación
-    """

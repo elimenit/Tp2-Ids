@@ -6,7 +6,6 @@ import mysql.connector
 
 from database.db import HOST, USER, PASSWORD, PORT, DBNAME
 
-print(HOST, USER, PASSWORD, PORT, DBNAME)
 def iniciar_base_datos():
     """ Inicializa la base de datos
     Pre: Necesita que el DBMS este corriendo y que solo se ejecute al iniciar la Aplicacion de flask.
