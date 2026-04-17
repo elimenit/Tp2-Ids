@@ -6,7 +6,7 @@ Post: todos los test deben de pasar
 """
 import requests
 
-URL_PARTIDOS = "localhost:5000/partidos"
+URL_PARTIDOS = "http://localhost:5000/partidos"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0",
     "Accept": "application/json",
@@ -46,7 +46,7 @@ def obtener_partido_vacio():
     assert isinstance(partido_vacio.json(), list)
     assert len(partido_vacio.json()) == 0
 
-def 
+#def 
 # Partidos Casos Ideales
 
 def test_crear_partido(): # Porfavor si no va ha retornar nada no coloquen None
