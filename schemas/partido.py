@@ -13,9 +13,15 @@ class Partido(PartidoBase):
     """
 
 class ResultadoPartido():
-    """Clase o TDA del resultado de un partido
-    """
-    pass
+    def __init__(self, local: int, visitante: int):
+        self.local = local
+        self.visitante = visitante
+    
+    def to_dict(self):
+        return {
+            "local": self.local,
+            "visitante": self.visitante
+        }
 
 class PrediccionPartido():
     """TDA de la prediccion de un partido
