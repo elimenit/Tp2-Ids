@@ -18,7 +18,7 @@ Paginacion a cada uno de los endpoints(Offset-limit)
 Hasta cuanta informacion deberia enviar por request
 """
 from flask import Blueprint, request
-from database.conexion import get_conexion
+from database.db import get_connection
 from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
 )
@@ -114,7 +114,7 @@ def eliminar(id: int):
     
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
 def mostrar_resultado(id: int):
-    conn = get_conexion()
+    conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
     try:
