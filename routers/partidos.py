@@ -7,6 +7,7 @@ POST /partidos
 GET /partidos/<id>"""
 
 from database.db import get_connection
+from database.db import eliminar_partido
 
 def obtener_partido(id_partido: int):
     conn = get_connection()
@@ -115,16 +116,12 @@ def actualizar_parcialmente(id: int):
 
 @bp_partidos.route("/<int:id>", methods=["DELETE"])
 def eliminar(id: int):
-    """Elimina un partido
-    Pre: Necesita el id de un partido existente
-    Post: Elimina el prtido de la base de datos
-    Args:
-        id (int): identificador unico del partido
+    partido = eliminar_partido(id)  
 
-    Returns:
-        Partido: partido eliminado
-    """
-    pass
+    if partido is None:
+        return jsonify({"error": f"No existe un partido con id {id}"}), 404
+    
+    return jsonify(partido), 200
 
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
 def mostrar_resultado(id: int):
