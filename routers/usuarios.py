@@ -13,19 +13,79 @@ PAGINACION (limit-offset)
 from flask import Blueprint, jsonify, request
 from schemas.usuario import UsuarioBase, Usuario
 # Validaciones
-from seeds.usuarios import validacion_creacion_usuario
+from seeds.usuarios import validacion_creacion_usuario, validacion_existencia_usuario
 # BD
-from database.usuarios import db_crear_usuario
+from database.usuarios import db_crear_usuario, db_obtener_usuarios
+# Paginacion
+from utils.paginacion import crear_response_paginacion, validar_offset
+# Errores
+from utils.errores import error_response
 
 bp_usuarios = Blueprint("usuarios", __name__, url_prefix="/usuarios")
 
 @bp_usuarios.route(rule="/", methods=["GET"])
-def listar_usuarios(limit: int =10, offset: int =10):
+def listar_usuarios():
     """ Lista los usuarios con paginacion
-    Pre: Necesita que hayga datos en labase de datos
+    Pre: Necesita que halla datos en labase de datos
     Post: Devuelva una lista de usuarios
     """
-    pass
+    limit = request.args.get("_limit", default=10, type=int)
+    offset = request.args.get("_offset", default=0, type=int)
+
+    base = request.base_url
+    try:
+        users_data = db_obtener_usuarios()
+    except Exception as e:
+        return error_response(
+            "Error del servidor",
+            "INTERNAL_SERVER_ERROR",
+            f"Ha ocurrido un error durante la obtención de usuarios: {e}",
+            500
+        )
+    
+    num_users = len(users_data)
+    offset_ok, offset_response = validar_offset(offset, num_users)
+    if not offset_ok:
+        return offset_response
+    
+    response_pages = crear_response_paginacion(limit, offset, num_users, base)
+    
+    selected_users = users_data[offset:(limit+offset)]
+    list_users = [{'id': userid, 'nombre': name} for userid, name, _ in selected_users]
+
+    response = {
+        "metadata": {
+            "cant_usuarios": num_users
+        },
+        "usuarios": list_users,
+        "_links": response_pages
+    }
+    return jsonify(response), 200
+
+@bp_usuarios.route(rule="/<int:input_id>", methods=["GET"])
+def listar_usuario(input_id):
+    """ 
+    Recibido un ID de usuario, devuelve su información
+    """
+    try:
+        users_data = db_obtener_usuarios()
+    except Exception as e:
+        return error_response(
+            "Error del servidor",
+            "INTERNAL_SERVER_ERROR",
+            f"Ha ocurrido un error durante la obtención de usuarios: {e}",
+            500
+        )
+    exis_ok, exis_response = validacion_existencia_usuario(input_id, [x[0] for x in users_data])
+    if exis_ok:
+        for id, user, email in users_data:
+            if id == input_id:
+                return {
+                    "id": id,
+                    "nombre": user,
+                    "email": email
+                }, 200
+    return exis_response
 
 @bp_usuarios.route(rule="/", methods=["POST"])
 def crear_usuario():

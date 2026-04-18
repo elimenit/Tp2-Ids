@@ -1,4 +1,6 @@
 from schemas.usuario import UsuarioBase
+from flask import Response
+from utils.errores import error_response
 
 def validacion_creacion_usuario(chek_user: UsuarioBase) -> bool:
     """Verificacion de un usuario en su creacion
@@ -18,3 +20,16 @@ def validacion_creacion_usuario(chek_user: UsuarioBase) -> bool:
         #raise Exception("Usuario con nombre invalido")
     
     return es_valido
+
+def validacion_existencia_usuario(user_id: int, ids_list: list) -> tuple[bool, Response | None]:
+    """
+    Valida que el usuario exista en la DB. Si no cumple, devuelve una Response en el formato indicado en el swagger
+    """
+    if (user_id not in ids_list):
+        return False, error_response(
+            "Input error",
+            "ERROR_NOT_FOUND",
+            f"No se han encontrado coincidencias para el ID: {user_id}. Ingrese un numero entre {min(ids_list)} a {max(ids_list)}.",
+            404
+        )
+    return True, None

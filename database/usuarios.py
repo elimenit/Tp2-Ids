@@ -8,13 +8,16 @@ Opcional:
 from database.db import get_connection
 from schemas.usuario import UsuarioBase, Usuario
 
-def db_obtener_usuarios(limit: int = 10, offset: int = 10):
-    conn = get_conexion()
-    pass
-
-def db_obtener_usuario():
-    conn = get_connection()
-    pass
+def db_obtener_usuarios() -> list[tuple[int, str, str]]:
+    """
+    Devuelve una lista con todos los registros de la tabla usuarios ordeandos por ID
+    """
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            query = "SELECT id, nombre, email FROM usuarios ORDER BY id;"
+            cur.execute(query)
+            results = cur.fetchall()
+    return results
 
 def db_crear_usuario(user_recv: UsuarioBase)-> Usuario:
     """Creacion de un Usuario
