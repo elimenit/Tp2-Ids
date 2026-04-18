@@ -17,7 +17,7 @@ PATCH /partidos/id
 Paginacion a cada uno de los endpoints(Offset-limit)
 Hasta cuanta informacion deberia enviar por request
 """
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from database.db import get_connection
 from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
@@ -76,15 +76,59 @@ def obtener(id: int):
 
 @bp_partidos.route("/<int:id>", methods=["PUT"])
 def actualizar(id: int):
-    """Actualiza el partido
 
-    Args:
-        id (int): id del partido a actualizar
+    datos = request.get_json() 
 
-    Returns:
-        Partido: el partido actualizado
+    if not datos:
+        return jsonify({"error": "No se proporcionaron datos para actualizar"}), 400
+    
+    # verifico que no hayan campos vacios o faltantes, si los hay devuelvo error.
+    campos_obligatorios = ["equipo_local_id", "equipo_visitante_id", "fecha", "fase_id"]
+    for campo in campos_obligatorios:
+        if campo not in datos or datos[campo] is None or datos[campo] == "":
+            return jsonify({"error": 'Los campos "equipo_local_id", "equipo_visitante_id", "fecha" y "fase_id" son obligatorios'}), 400
+
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM partidos WHERE id = %s", (id,))
+    if not cursor.fetchone():
+        return jsonify({"error": "No se encontro el partido"}), 404
+    
+    # Verifico que existan los equipos y la fase, si no existen devuelvo error.
+    cursor.execute("SELECT * FROM equipos WHERE id = %s", (datos.get("equipo_local_id"),))
+    if not cursor.fetchone():
+        return jsonify({"error": "El equipo local no existe en la base de datos"}), 404
+    
+    cursor.execute("SELECT * FROM equipos WHERE id = %s", (datos.get("equipo_visitante_id"),))
+    if not cursor.fetchone():
+        return jsonify({"error": "El equipo visitante no existe en la base de datos"}), 404
+    
+    cursor.execute("SELECT * FROM fases WHERE id = %s", (datos.get("fase_id"),))
+    if not cursor.fetchone():
+        return jsonify({"error": "La fase no existe en la base de datos"}), 404
+
+    query = """
+    UPDATE partidos
+    SET equipo_local_id = %s, equipo_visitante_id = %s, fecha = %s, fase_id = %s
+    WHERE id = %s
     """
-    return partido
+
+    cursor.execute(query, (
+        datos.get("equipo_local_id"),
+        datos.get("equipo_visitante_id"),
+        datos.get("fecha"),
+        datos.get("fase_id"),
+        id
+    ))
+
+    conn.commit()
+    
+    # Obtengo el partido actualizado para luego returnearlo
+    cursor.execute("SELECT * FROM partidos WHERE id = %s", (id,))
+    partido_actualizado = cursor.fetchone()
+
+    return jsonify(partido_actualizado), 200
 
 @bp_partidos.route("/<int:id>", methods=["PATCH"])
 def actualizar_parcialmente(id: int):
