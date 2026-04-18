@@ -26,28 +26,119 @@ from utils.errores import error_response
 
 bp_partidos = Blueprint('partidos', __name__, url_prefix='/') 
 
-@bp_partidos.route("/", methods=["GET"])
+@bp_partidos.route("/partidos", methods=["GET"])
 def listar():
-    """Lista todos los Partidos
-    Pre: Recibe todos los filtros para encontrar lo partidos que matcheen
-    Post: devuelve partidos que cumplen los filtros
-
-    Args:
-        equipo (str): Nombre del equipo
-        fecha (str): Una fecha con formato: AAAA-MM-DD
-        fase (str): EN que fase de la copa se encuentra
-        _limit (int): paginacion # Pueden editarlo si desean
-        _offset (int): paginacion
-
-    Returns:
-        dict: devuelve una lista de partidos 
-    """
-    equipo = request.args.get("equipo", "")
-    fecha = request.args.get("fecha", "")
-    fase = request.args.get("fase", "")
+    equipo = request.args.get("equipo")
+    fecha = request.args.get("fecha")
+    fase = request.args.get("fase")
     limit = request.args.get("_limit", 10, type=int)
-    offset = request.args.get("_offset", 10, type=int)
-    return jsonify({"hola": "mundo"})
+    offset = request.args.get("_offset", 0, type=int)
+
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    filtros = []
+    params = []
+
+   
+    # Filtros
+   
+    if equipo:
+        filtros.append("(el.nombre LIKE %s OR ev.nombre LIKE %s)")
+        params.append(f"%{equipo}%")
+        params.append(f"%{equipo}%")
+
+    if fecha:
+        filtros.append("p.fecha = %s")
+        params.append(fecha)
+
+    if fase:
+        filtros.append("LOWER(f.nombre) = LOWER(%s)")
+        params.append(fase)
+
+    where_clause = ""
+    if filtros:
+        where_clause = "WHERE " + " AND ".join(filtros)
+
+   
+    # Query principal
+   
+    query = f"""
+        SELECT p.id,
+               el.nombre AS equipo_local,
+               ev.nombre AS equipo_visitante,
+               p.fecha,
+               f.nombre AS fase
+        FROM partidos p
+        JOIN equipos el ON p.equipo_local_id = el.id
+        JOIN equipos ev ON p.equipo_visitante_id = ev.id
+        JOIN fases f ON p.fase_id = f.id
+        {where_clause}
+        LIMIT %s OFFSET %s
+    """
+
+    cursor.execute(query, (*params, limit, offset))
+    resultados = cursor.fetchall()
+
+  
+    # Count total (para HATEOAS)
+  
+    count_query = f"""
+        SELECT COUNT(*) as total
+        FROM partidos p
+        JOIN equipos el ON p.equipo_local_id = el.id
+        JOIN equipos ev ON p.equipo_visitante_id = ev.id
+        JOIN fases f ON p.fase_id = f.id
+        {where_clause}
+    """
+
+    cursor.execute(count_query, params)
+    total = cursor.fetchone()["total"]
+
+   
+    # Links (HATEOAS)
+   
+    base_url = request.base_url
+
+    def build_url(new_offset):
+        query = f"_limit={limit}&_offset={new_offset}"
+
+        if equipo:
+          query += f"&equipo={equipo}"
+        if fecha:
+          query += f"&fecha={fecha}"
+        if fase:
+          query += f"&fase={fase}"
+
+        return f"{base_url}?{query}"
+
+    links = {
+    "_first": {"href": build_url(0)}
+    }
+
+    if offset > 0:
+      links["_prev"] = {"href": build_url(offset - limit)}
+
+    if offset + limit < total:
+     links["_next"] = {"href": build_url(offset + limit)}
+
+    if total > 0:
+        links["_last"] = {"href": build_url((total - 1) // limit * limit)}
+
+    response = {
+        "partidos": resultados,
+        "_links": links
+    }
+
+    if not resultados:
+        cursor.close()
+        conn.close()
+        return '', 204
+    cursor.close()
+    conn.close()    
+    return jsonify(response), 200
+
+
 
 @bp_partidos.route("/", methods=["POST"])
 def crear():
