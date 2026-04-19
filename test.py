@@ -8,6 +8,8 @@ app = FastAPI()
 with open("swagger.yaml", "r", encoding="utf-8") as f:
     custom_openapi = yaml.safe_load(f)
 
+app.openapi_schema = custom_openapi
+
 @app.get("/")
 def mostrar_usuario():
     return {"Hola": "Mundo", "Te logeastes desde la misma red": "Que tengas lindos Sueños"}
@@ -18,7 +20,7 @@ def get_swagger_ui():
     return app.openapi()
 
 # Sobrescribimos el esquema interno con tu YAML
-app.openapi_schema = custom_openapi
+
 
 if __name__ == "__main__":
     import uvicorn

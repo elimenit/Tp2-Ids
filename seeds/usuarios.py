@@ -15,7 +15,7 @@ def validacion_offset_limit(limit: int, offset: int)-> bool:
         bool: si los parametros ingresados son validos
     """
     es_valido: bool = False
-    if limit < 10 and limit > 0 and offset >= 0:
+    if limit <= 10 and limit >= 0 and offset >= 0:
         es_valido = True
 
     return es_valido

@@ -56,11 +56,11 @@ activar_virtual_enviroment_descarguar_dependencys() {
     python3 -m venv .venv 
     source .venv/bin/activate
     pip install -r requirements.txt
-    flask run
+    python3 -m app
     firefox localhost:8000 || chrome localhost:8000 || edge localhost:8000 || brave localhost:8000
 }
 main() {
-    dir_remoto="git@github.com:elimenit/Tp2-Ids.git"
+    dir_remoto="git@github.com:elimenit/tp2_ids.git"
     nombre_local="Tp2-Ids"
     instalacion_software
     buscar_proyecto_y_instalar $dir_remoto $nombre_local
