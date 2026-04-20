@@ -4,13 +4,26 @@ Pertenecen a /routers/ranking.py
 ## La implementacion es libre de realizarse mientras se cumpla el contrato
 
 """
-from database.DB import get_connection
-from flask import Blueprint
+from database.db import get_connection
 
-bp_ranking = Blueprint("ranking", __name__, url_prefix="/ranking")
-
-@bp_ranking.route("/", methods=["GET"])
-def obtener_ranking():
-    """ Obtiene el ranking
+def obtener_ranking_db(limit: int, offset: int) -> list[tuple[int, int]]:
     """
-    pass
+    Obtiene el ranking ordenado descendientemente en base a sus puntos. Recibe parámetros LIMIT y OFFSET.
+    """
+    query = """
+        SELECT puntos, usuario_id FROM ranking
+        ORDER BY puntos DESC
+        LIMIT %s
+        OFFSET %s
+    """
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, (limit, offset))
+            return cur.fetchall()
+
+def contar_rankings() -> int:
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT COUNT(*) FROM ranking")
+            resultado = cur.fetchone()
+            return int(resultado[0]) if resultado else 0
