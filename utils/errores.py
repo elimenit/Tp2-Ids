@@ -1,22 +1,20 @@
 from flask import jsonify
 
-def error_response(message: str, code: str = "ERROR", description: str = "", status_code: int = 400):
-    """Genera una respuesta de error con el formato definido en el swagger
-    
+def error_response(code: str,  message: str, level: str, description: str, status_code: int = 400):
+    """Modelo de Respuesta de la API
+
     Args:
+        code (str): Codigo de estado de la peticion
         message (str): Mensaje corto del error
-        code (str): Código identificador del error
-        description (str): Descripción detallada del error
-        status_code (int): Código HTTP a devolver
-    
-    Returns:
-        Response: Respuesta Flask con formato de error estándar
+        level (str): Nivel de riesgo (bajo, alto o grave) del error
+        description (str): Motivo del error
+        status_code (int, optional): Codigo HTTP a devolver. Defaults to 400.
     """
-    return jsonify({
+    return  jsonify({
         "errors": [{
             "code": code,
             "message": message,
-            "level": "error",
+            "level": level,
             "description": description
         }]
     }), status_code
