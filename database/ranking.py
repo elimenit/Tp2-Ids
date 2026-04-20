@@ -4,10 +4,10 @@ Pertenecen a /routers/ranking.py
 ## La implementacion es libre de realizarse mientras se cumpla el contrato
 
 """
-from schemas.ranking import Ranking
+
 from database.db import get_connection
 
-def db_obtener_ranking(limit: int = 10, offset: int=0) -> Ranking:
+def db_obtener_ranking(limit: int = 10, offset: int=0):
     conn = get_connection()
     cursor = conn.cursor()
     query = """

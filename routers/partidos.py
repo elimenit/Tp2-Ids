@@ -288,15 +288,7 @@ def actualizar_parcialmente(id: int):
 
 @bp_partidos.route("/<int:id>", methods=["DELETE"])
 def eliminar(id: int):
-    """Elimina un partido
-    Pre: Necesita el id de un partido existente
-    Post: Elimina el prtido de la base de datos
-    Args:
-        id (int): identificador unico del partido
-
-    Returns:
-        Partido: partido eliminado
-    """
+   
     if not validar_id_partido(id): 
         return error_response(
             code="400",
