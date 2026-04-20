@@ -28,10 +28,10 @@ def iniciar_base_datos():
 
     for query in consultas_sql:
         if query.strip():
-            print(f"Se jecuta la query: {query}")
+            #print(f"Se jecuta la query: {query}")
             cursor.execute(query)
             conn.commit()
-            print("query ejecutada con exito!")
+            #print("query ejecutada con exito!")
 
     cursor.close()
     conn.close()

@@ -1,8 +1,26 @@
-from schemas.usuario import UsuarioBase
-from flask import Response
-from utils.errores import error_response
+""" 
+Validacion sin usar la conexion a la Base de Datos
+Recordar el Naveguador siempre miente, asi que validemos que no nos mienta
+"""
+from schemas.usuario import UsuarioBase, Usuario
 
-def validacion_creacion_usuario(chek_user: UsuarioBase) -> bool:
+def validacion_offset_limit(limit: int, offset: int)-> bool:
+    """Valida que el usuario no pida demas
+
+    Args:
+        offset (int): desde donde empieza
+        limit (int): cuantos resultados va ha obtener
+
+    Returns:
+        bool: si los parametros ingresados son validos
+    """
+    es_valido: bool = False
+    if limit <= 10 and limit >= 0 and offset >= 0:
+        es_valido = True
+
+    return es_valido
+
+def validacion_creacion_usuario(user: UsuarioBase) -> bool:
     """Verificacion de un usuario en su creacion
     Pre: Debe recibir la informacion de un usuario a crear
     Post: Devuelve un booleano que le indica que el usuario es valido o no
@@ -11,25 +29,47 @@ def validacion_creacion_usuario(chek_user: UsuarioBase) -> bool:
     Returns:
         bool: Validacion si es el chek_user es valido para ingresarlo a la BD
     """
-    es_valido: bool = True
-    if chek_user.email is None:
-        es_valido = False
-        #raise Exception("Usuario con email invalido!")
-    if chek_user.nombre is None:
-        es_valido = False
-        #raise Exception("Usuario con nombre invalido")
+    if not user.nombre or not user.nombre.strip():
+        return False
+    if not user.email or "@" not in user.email:
+        return False
+    return True
+
+def validacion_campos_usuario(user: Usuario) -> bool:
+    """Valida los campos de un Usuario.
+    Pre: Necesita el Usuario a validar.
+    Post: devuelve si es valido.
+
+    Args:
+        user (Usuario): Usuario a validar
+
+    Returns:
+        bool: Si el usuario es valido.
+    """
+    es_valido: bool = False # Naveguador siempre miente
     
+    if validacion_id_usuario(user.id):
+        if user.nombre is not None:
+            if user.nombre.strip() != "":
+                if user.email is not None:
+                    if "@" in user.email:
+                        es_valido = True
+            
     return es_valido
 
-def validacion_existencia_usuario(user_id: int, ids_list: list) -> tuple[bool, Response | None]:
+def validacion_id_usuario(id: int) -> bool:
+    """Valida un id valido
+    Pre: Necesita el id de un usario
+    Post: Devuelve un booleano
+    Args:
+        id (int): id de un usuario
+
+    Returns:
+        bool: si es valido el id
     """
-    Valida que el usuario exista en la DB. Si no cumple, devuelve una Response en el formato indicado en el swagger
-    """
-    if (user_id not in ids_list):
-        return False, error_response(
-            "Input error",
-            "ERROR_NOT_FOUND",
-            f"No se han encontrado coincidencias para el ID: {user_id}. Ingrese un numero entre {min(ids_list)} a {max(ids_list)}.",
-            404
-        )
-    return True, None
+    id_valido: bool = False
+    
+    if id > 0:
+        id_valido = True
+
+    return id_valido

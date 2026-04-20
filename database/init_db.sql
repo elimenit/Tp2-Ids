@@ -1,22 +1,15 @@
 CREATE DATABASE IF NOT EXISTS mundial_futbol;
 USE mundial_futbol;
-CREATE TABLE IF NOT EXISTS equipos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    pais VARCHAR(50) NOT NULL
-);
 CREATE TABLE IF NOT EXISTS fases (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL
+    nombre VARCHAR(50) NOT NULL UNIQUE
 );
 CREATE TABLE IF NOT EXISTS partidos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    equipo_local_id INT NOT NULL,
-    equipo_visitante_id INT NOT NULL,
-    fecha DATETIME,
+    equipo_local VARCHAR(100),
+    equipo_visitante VARCHAR(100),
+    fecha DATE,
     fase_id INT NOT NULL,
-    FOREIGN KEY (equipo_local_id) REFERENCES equipos(id) ON DELETE CASCADE,
-    FOREIGN KEY (equipo_visitante_id) REFERENCES equipos(id) ON DELETE CASCADE,
     FOREIGN KEY (fase_id) REFERENCES fases(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS usuarios (
@@ -24,7 +17,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS prediccion (
+CREATE TABLE IF NOT EXISTS predicciones (
     usuario_id INT NOT NULL,
     partido_id INT NOT NULL,
     goles_local INT NOT NULL,
@@ -44,3 +37,11 @@ CREATE TABLE IF NOT EXISTS resultados (
     goles_visitante INT,
     FOREIGN KEY (partido_id) REFERENCES partidos(id) ON DELETE CASCADE
 );
+INSERT IGNORE INTO fases(nombre) VALUES ('GRUPOS');
+INSERT IGNORE INTO fases(nombre) VALUES ('CUARTOS');
+INSERT IGNORE INTO fases(nombre) VALUES ('OCTAVOS');
+INSERT IGNORE INTO fases(nombre) VALUES ('DIECISEISAVOS');
+INSERT IGNORE INTO fases(nombre) VALUES ('SEMIS');
+INSERT IGNORE INTO fases(nombre) VALUES ('FINAL');
+
+
