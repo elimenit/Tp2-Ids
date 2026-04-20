@@ -23,8 +23,9 @@ from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
 )
 from utils.errores import error_response
+from database.partidos import eliminar_partido
 
-bp_partidos = Blueprint('partidos', __name__, url_prefix='/') 
+bp_partidos = Blueprint('partidos', __name__, url_prefix='/partidos') 
 
 @bp_partidos.route("/", methods=["GET"])
 def listar():
@@ -145,16 +146,12 @@ def actualizar_parcialmente(id: int):
 
 @bp_partidos.route("/<int:id>", methods=["DELETE"])
 def eliminar(id: int):
-    """Elimina un partido
-    Pre: Necesita el id de un partido existente
-    Post: Elimina el prtido de la base de datos
-    Args:
-        id (int): identificador unico del partido
+    partido = eliminar_partido(id)  
 
-    Returns:
-        Partido: partido eliminado
-    """
-    return Partido
+    if partido is None:
+        return jsonify({"error": f"No existe un partido con id {id}"}), 404
+    
+    return jsonify(partido), 200
     
 @bp_partidos.route("/<int:id>/resultado", methods=["PUT"])
 def mostrar_resultado(id: int):
