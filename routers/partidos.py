@@ -18,13 +18,16 @@ Paginacion a cada uno de los endpoints(Offset-limit)
 Hasta cuanta informacion deberia enviar por request
 """
 from flask import Blueprint, request, jsonify
+from datetime import date
 from database.db import get_connection
 from schemas.partido import (
     Partido, ResultadoPartido, PrediccionPartido
 )
+from seeds.partidos import verificar_campos_obligatorios
+from database.partidos import obtener_ids_partido, crear_partido_db
 from utils.errores import error_response
 
-bp_partidos = Blueprint('partidos', __name__, url_prefix='/') 
+bp_partidos = Blueprint('partidos', __name__, url_prefix='/partidos') 
 
 @bp_partidos.route("/", methods=["GET"])
 def listar():
@@ -42,15 +45,22 @@ def listar():
     Returns:
         dict: devuelve una lista de partidos 
     """
-    equipo = request.args.get("equipo", "")
+    """equipo = request.args.get("equipo", "")    for campo in campos_obligatorios:
+        if campo not in datos or datos[campo] is None or datos[campo] == "":
+            return jsonify({"error": 'Los campos "equipo_local_id", "equipo_visitante_id", "fecha" y "fase_id" son obligatorios'}), 400
     fecha = request.args.get("fecha", "")
     fase = request.args.get("fase", "")
     limit = request.args.get("_limit", 10, type=int)
     offset = request.args.get("_offset", 10, type=int)
-    return jsonify({"hola": "mundo"})
+    return jsonifrom database."""
+
+def verificar_existencia_partido():
+    """
+    Verifica que existan tanto equipo local, visitante y la fase dentro de las tablas
+    """({"hola": "mundo"})
 
 @bp_partidos.route("/", methods=["POST"])
-def crear():
+def crear_partido():
     """ Creacion de un Partido
     Pre: Recibe en el Body la informacion de un partido
     Post: Devuelve el partido creado
@@ -58,7 +68,30 @@ def crear():
     Returns:
         _type_: devuelve el equipo creado
     """
-    return {} 
+    partido_data = request.get_json()
+    campos_ok, campos_response = verificar_campos_obligatorios(partido_data, ["equipo_local", "equipo_visitante", "fecha", "fase"])
+    if not campos_ok:
+        return campos_response
+    print(partido_data)
+    ids_partido = obtener_ids_partido(partido_data["equipo_local"], partido_data["equipo_visitante"], partido_data["fase"])
+    print(ids_partido)
+    for campo, valor_id in ids_partido.items():
+        if not valor_id:
+            # Personalizamos el mensaje según la clave del diccionario
+            if "local" in campo:
+                detalle = f"el equipo '{partido_data['equipo_local']}'"
+            elif "visitante" in campo:
+                detalle = f"el equipo '{partido_data['equipo_visitante']}'"
+            else:
+                detalle = f"la fase '{partido_data['fase']}'"
+            return error_response(
+                "Input error",
+                "ERROR_NOT_FOUND",
+                f"No se ha podido encontrar {detalle} en nuestra base de datos",
+                404
+            )
+    crear_partido_db(ids_partido["id_local"], ids_partido["id_visitante"], date.fromisoformat(partido_data["fecha"]), ids_partido["id_fase"])
+    return jsonify(partido_data), 201
 
 @bp_partidos.route("/<int:id>", methods=["GET"])
 def obtener(id: int):
