@@ -38,3 +38,19 @@ def validar_id_partido(id_partido: int) -> bool:
         es_valido = True
     
     return es_valido
+
+def validar_goles_local_visitante_positivos(gl: int, gv: int)-> bool:
+    """Goles Positivos
+
+    Args:
+        gl (int): cantidad de goles del partido local
+        gv (int): cantidad de goles del partido visitante
+
+    Returns:
+        bool: es valido
+    """
+    es_valido = False
+    if gl > 0 and gv > 0:
+        es_valido = True
+    
+    return es_valido

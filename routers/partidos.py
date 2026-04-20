@@ -23,13 +23,13 @@ from schemas.partido import (
 )
 # Validaciones
 from seeds.partidos import (
-    validar_fecha, validar_offset_limit, validar_id_partido
+    validar_fecha, validar_offset_limit, validar_id_partido, validar_goles_local_visitante_positivos
 )
 # conexion con la Base de datos
 from database.partidos import (
     db_obtener_partidos, db_obtener_partido, db_crear_partido,
     db_actualizar_partido, db_actualizar_parcialmente_partido, db_eliminar_partido,
-    db_obtener_prediccion, db_actualizar_resultado
+    db_actualizar_resultado, db_crear_prediccion, db_obtener_prediccion
 )
 
 from utils.errores import error_response
@@ -74,9 +74,6 @@ def listar():
             status_code=400
         )
     results = db_obtener_partidos(equipo, fecha, fase, limit, offset)
-    print(f"Valor")
-    print(type(results))
-    print("---")
     if results is None:
         return jsonify([]), 200
     return jsonify(results), 200
@@ -251,12 +248,43 @@ def actualizar_parcialmente(id: int):
         return error_response(
             code="400",
             message="Campos vacios",
-            level="MEDIO",
+            level="ALTO",
             description="Campos vacios o nulos",
             status_code=400
         )
     
-    return Partido
+    equipo_local = body.get("equipo_local", None)
+    equipo_visitante = body.get("equipo_visitante", None)
+    fecha = body.get("fecha", None)
+    fase = body.get("fase", None)
+    if not validar_id_partido(id):
+        return error_response(
+            code="400",
+            message="Id no valido",
+            level="BAJO",
+            description="Id del partido no valido",
+            status_code=400
+        )
+     
+    
+    if fecha is not None and not validar_fecha(fecha):
+        return error_response(
+            code=400,
+            message="Fecha no valida",
+            level="MEDIO",
+            description="Formato de la fecha no valido",
+            status_code=400)
+
+    id_partido = db_actualizar_parcialmente_partido(id, equipo_local, equipo_visitante, fecha, fase)
+    if not id_partido:
+        return error_response(
+            code="404",
+            message="Partido not found",
+            level="MEDIO",
+            status_code=404
+        )
+
+    return jsonify(db_obtener_partido(id_partido).to_dict()), 200
 
 @bp_partidos.route("/<int:id>", methods=["DELETE"])
 def eliminar(id: int):
@@ -326,9 +354,17 @@ def actualizar_resultado(id: int):
     except (TypeError, ValueError):
         return error_response(
             code="400",
-            message="Deben ser enteros",
+            message="Deben ser numeros positivos",
             status_code=400
         )
+    
+    if not validar_goles_local_visitante_positivos(goles_local, goles_visitante):
+        return error_response(
+            code="400",
+            message="Goles Negativos",
+            level="ALTO",
+            description="Cantidad de goles negativos",
+            status_code=400)
 
     updated = db_actualizar_resultado(id, goles_local, goles_visitante)
 
@@ -361,4 +397,33 @@ def predecir(id: int):
     Returns:
         PrediccionPartido: modelo a devolver
     """
-    pass
+    body = request.get_json()
+    if not body:
+        return error_response(
+            code="400",
+            message="Campos vacios",
+            status_code=400
+        )
+    
+    try: 
+        id_usuario = int(body.get("id_usuario", None))
+        local = int(body.get("local", None))
+        visitante = int(body.get("visitante", None))
+    except (ValueError, TypeError):
+        print("error en los datos")
+        return error_response(
+            code="400",
+            message="Deben ser numeros positivos",
+            status_code=400
+        )
+
+    se_creo_prediccion = db_crear_prediccion(id_usuario, id, local, visitante)
+    if not se_creo_prediccion:
+        return error_response(
+            code="404",
+            message="USER OR PARTIDO NOT FOUND",
+            level = "ALTO",
+            description="Usuario No encontrado",
+            status_code=404
+        )
+    return jsonify(db_obtener_prediccion(id_partido=id).to_dict()), 201

@@ -48,3 +48,21 @@ class ResultadoPartido():
 class PrediccionPartido():
     """TDA de la prediccion de un partido
     """
+    id_usuario: int
+    id_partido: int
+    local: str
+    visitante: str
+    def __init__(self, id_usuario: int,id_partido: int, local: str, visitante: str):
+        self.id_usuario = id_usuario
+        self.id_partido = id_partido
+        self.local = local
+        self.visitante = visitante
+    
+
+    def to_dict(self)-> dict:
+        return {
+            "id_usuario": self.id_usuario,
+            "id_partido": self.id_partido,
+            "local": self.local,
+            "visitante": self.visitante
+        }

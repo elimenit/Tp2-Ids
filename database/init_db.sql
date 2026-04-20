@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS prediccion (
+CREATE TABLE IF NOT EXISTS predicciones (
     usuario_id INT NOT NULL,
     partido_id INT NOT NULL,
     goles_local INT NOT NULL,

@@ -57,9 +57,6 @@ def db_crear_usuario(user_recv: UsuarioBase)-> Usuario:
     new_id = cursor.fetchone()[0]
     cursor.execute("SELECT * FROM usuarios WHERE id = %s", (new_id, ))
     user = cursor.fetchone()
-    print(user)
-    print(type[new_id])
-    print(new_id)
     conn.commit()
     cursor.close()
     conn.close()

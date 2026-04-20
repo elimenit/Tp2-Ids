@@ -5,7 +5,7 @@ Pertenecen a /routers/partidos.py
 """
 from database.db import get_connection
 
-from schemas.partido import PartidoBase, Partido
+from schemas.partido import PartidoBase, Partido, PrediccionPartido
 
 def db_obtener_partidos(equipo=None, fecha=None, fase=None, limit=10, offset=0):
     conn = get_connection()
@@ -124,9 +124,61 @@ def db_actualizar_partido(id: int, equipo_local: str, equipo_visitante: str, fec
     conn.close()
     return id
 
-def db_actualizar_parcialmente_partido():
-    conn = get_conexion()
-    pass
+def db_actualizar_parcialmente_partido(
+    id: int,
+    equipo_local: str = None,
+    equipo_visitante: str = None,
+    fecha: str = None,
+    fase: str = None
+) -> None|int:
+    
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    campos = []
+    valores = []
+
+    if equipo_local is not None:
+        campos.append("equipo_local = %s")
+        valores.append(equipo_local)
+
+    if equipo_visitante is not None:
+        campos.append("equipo_visitante = %s")
+        valores.append(equipo_visitante)
+
+    if fecha is not None:
+        campos.append("fecha = %s")
+        valores.append(fecha)
+
+    if fase is not None:
+        cursor.execute("SELECT id FROM fases WHERE nombre = %s", (fase,))
+        f = cursor.fetchone()
+        if f is None:
+            cursor.close()
+            conn.close()
+            return None
+        campos.append("fase_id = %s")
+        valores.append(f[0])
+
+    if not campos:
+        cursor.close()
+        conn.close()
+        return None
+
+    query = f"""
+        UPDATE partidos
+        SET {', '.join(campos)}
+        WHERE id = %s
+    """
+
+    valores.append(id)
+
+    cursor.execute(query, tuple(valores))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return id
 
 def db_eliminar_partido(id: int)-> bool:
     conn = get_connection()
@@ -149,11 +201,7 @@ def db_actualizar_resultado(id: int, goles_local: int, goles_visitante: int) -> 
         conn.close()
         return False
 
-    # 2. verificar si existe resultado
-    cursor.execute(
-        "SELECT 1 FROM resultados WHERE partido_id = %s",
-        (id,)
-    )
+    cursor.execute("SELECT * FROM resultados WHERE partido_id = %s",(id,))
     existe = cursor.fetchone()
 
     if existe:
@@ -170,16 +218,56 @@ def db_actualizar_resultado(id: int, goles_local: int, goles_visitante: int) -> 
             """
             INSERT INTO resultados (partido_id, goles_local, goles_visitante)
             VALUES (%s, %s, %s)
-            """,
-            (id, goles_local, goles_visitante)
-        )
-
+            """,(id, goles_local, goles_visitante))
     conn.commit()
     cursor.close()
     conn.close()
 
     return True
+def db_obtener_prediccion(id_partido: int)-> None|PrediccionPartido:
+    conn = get_connection()
+    cursor = conn.cursor()
 
-def db_obtener_prediccion():
-    conn = get_conexion()
-    pass
+    query  = "SELECT * FROM predicciones WHERE partido_id = %s"
+    cursor.execute(query, (id_partido, ))
+
+    prediccion = cursor.fetchone()
+    if not prediccion:
+        cursor.close()
+        conn.close()
+        return None
+
+    cursor.close()
+    conn.close()
+    return PrediccionPartido(
+        id_usuario=prediccion[0],
+        id_partido=prediccion[1],
+        local=prediccion[2],
+        visitante=prediccion[3]
+    )
+
+
+
+def db_crear_prediccion(id_usuario: int, id_partido: int, local: int, visitante: int)-> bool:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT 1 FROM usuarios WHERE id = %s", (id_usuario, ))
+    exist_usuario = cursor.fetchone()
+    if not exist_usuario:
+        cursor.close()
+        conn.close()
+        return False
+
+    cursor.execute("SELECT 1 FROM partidos WHERE id = %s", (id_partido, ))
+    exist_partido = cursor.fetchone()
+    if not exist_partido:
+        cursor.close()
+        conn.close()
+        return False
+
+    query = "INSERT INTO predicciones(usuario_id, partido_id, goles_local, goles_visitante) VALUES (%s, %s, %s, %s)"
+    cursor.execute(query, (id_usuario, id_partido, local, visitante))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return True

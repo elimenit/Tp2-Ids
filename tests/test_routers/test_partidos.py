@@ -58,10 +58,10 @@ def test_crear_partido():
 
 def test_actualizar_resultado():
     partido = {
-    "equipo_local": "Alemania",
-    "equipo_visitante": "Portugal",
-    "fecha": "2026-04-19",
-    "fase": "SEMIS"
+        "equipo_local": "Alemania",
+        "equipo_visitante": "Portugal",
+        "fecha": "2026-04-19",
+        "fase": "SEMIS"
     }
     resultado = {
         "local": 2,
@@ -73,9 +73,54 @@ def test_actualizar_resultado():
     id_partido = response.json()["id"]
     response = requests.put(url=f"{URL}/{id_partido}/resultado", json=resultado, headers=HEADERS)
     assert response.status_code == 200
+    
     partido_update = response.json()
     for key in resultado:
         assert resultado[key] == partido_update["resultado"][key]
+    
+    response = requests.delete(url=f"{URL}/{id_partido}", headers=HEADERS)
+    assert response.status_code == 200
+
+def test_crear_prediccion():
+    user = {
+        "nombre": "Messi",
+        "email": "gmail@gmail.com"
+    }
+    partido = {
+        "equipo_local": "Argentina",
+        "equipo_visitante": "Portugal",
+        "fecha": "2026-07-24",
+        "fase": "CUARTOS"
+    }
+    
+    response = requests.post(url=f"http://127.0.0.1:5000/usuarios", json=user, headers=HEADERS)
+    assert response.status_code == 201
+    id_usuario = response.json()["id"]
+
+    response = requests.post(url=f"{URL}", json=partido, headers=HEADERS)
+    assert response.status_code == 201
+    id_partido = response.json()["id"]
+
+    prediccion = {
+        "id_usuario": id_usuario,
+        "local": 2,
+        "visitante": 1
+    }
+    response = requests.post(url=f"{URL}/{id_partido}/prediccion", json=prediccion, headers=HEADERS)
+    assert response.status_code == 201
+
+    prediccion_created = response.json()
+    for key in prediccion:
+        assert prediccion[key] == prediccion_created[key]
+    
+    response = requests.delete(url=f"http://127.0.0.1:5000/usuarios/{id_usuario}", headers=HEADERS)
+    assert response.status_code == 200
+    
+    response = requests.delete(url=f"{URL}/{id_partido}", headers=HEADERS)
+    assert response.status_code == 200
+
+
+    
 
 ## 400
 def crear_partido_vacio():
@@ -91,10 +136,37 @@ def crear_partido_vacio():
 ## 404
 # PATCH
 ## 200
+def test_acualizar_parcial_partido():
+    partido = {
+        "equipo_local": "Alemania",
+        "equipo_visitante": "Portugal",
+        "fecha": "2026-04-19",
+        "fase": "SEMIS"
+    }
+    partido_actualizado = {
+        "equipo_local": "POLONIA",
+        "equipo_visitante": "ESTONIA",
+        "fecha": "2024-04-23",
+        "fase": "FINAL"
+    }
+    response = requests.post(url=f"{URL}", json=partido, headers=HEADERS)
+    assert response.status_code == 201
+
+    partido_created = response.json()
+    id_partido=partido_created["id"]
+    for key in partido_actualizado:
+        response = requests.patch(url=f"{URL}/{id_partido}", json={key: partido_actualizado[key]}, headers=HEADERS)
+        assert response.status_code == 200
+        
+        partido_actual = response.json()
+        assert partido_actual[key] ==  partido_actualizado[key]
+    
+    response = requests.delete(url=f"{URL}/{id_partido}", headers=HEADERS)
+    assert response.status_code == 200
+
 ## 400
 ## 404
 # DELETE
 # 200
 # 404
-
-# Partidos Casos Vacios
+test_crear_prediccion()
